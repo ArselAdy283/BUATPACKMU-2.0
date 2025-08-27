@@ -1,6 +1,16 @@
 import uuid
 import tkinter as tk
 
+def copy_to_clipboard():
+    text = label_uuid["text"]           # ambil isi label
+    root.clipboard_clear()         # bersihkan clipboard
+    root.clipboard_append(text)    # salin ke clipboard
+    root.update() 
+    
+def generate_uuid_gui():
+    new_uuid = str(uuid.uuid4())
+    label_uuid.config(text=new_uuid)
+
 # ============================
 # =========== GUI ============
 # ============================
@@ -29,8 +39,14 @@ buttonMcPack = tk.Button(menu, text="Buat MCPACK", width=30, font=("Arial", 15),
 buttonMcPack.pack(pady=10)
 
 # ISI GENERATE UUID
-label_uuid = tk.Label(generator_UUID, text="Generate UUID", font=("Arial", 25))
+label_uuid_title = tk.Label(generator_UUID, text="Generate UUID", font=("Arial", 25))
+label_uuid_title.pack(pady=30)
+label_uuid = tk.Label(generator_UUID, text="", font=("Arial", 15))  # kosongkan label
 label_uuid.pack()
+btn_generate = tk.Button(generator_UUID, text="Generate UUID", command=generate_uuid_gui)
+btn_generate.pack(pady=5)
+btn_copy = tk.Button(generator_UUID, text="Copy", command=copy_to_clipboard)
+btn_copy.pack(pady=5)
 
 # ISI TEMPLATE RP
 label_rp = tk.Label(template_RP, text="Template ResourcePack", font=("Arial", 25))
