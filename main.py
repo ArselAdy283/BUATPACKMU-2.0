@@ -40,13 +40,16 @@ buttonMcPack.pack(pady=10)
 
 # ISI GENERATE UUID
 label_uuid_title = tk.Label(generator_UUID, text="Generate UUID", font=("Arial", 25))
-label_uuid_title.pack(pady=30)
-label_uuid = tk.Label(generator_UUID, text="", font=("Arial", 15))  # kosongkan label
-label_uuid.pack()
-btn_generate = tk.Button(generator_UUID, text="Generate UUID", command=generate_uuid_gui)
-btn_generate.pack(pady=5)
-btn_copy = tk.Button(generator_UUID, text="Copy", command=copy_to_clipboard)
-btn_copy.pack(pady=5)
+label_uuid_title.pack(pady=20)
+label_uuid = tk.Label(generator_UUID, text="<uuid>", bg="gold", font=("Arial", 15))  # kosongkan label
+label_uuid.pack(pady=40)
+
+btn_generate = tk.Button(generator_UUID, text="Generate UUID", width=20, command=generate_uuid_gui)
+btn_generate.pack()
+btn_copy = tk.Button(generator_UUID, text="Copy", width=20, command=copy_to_clipboard)
+btn_copy.pack()
+btn_backuuid = tk.Button(generator_UUID, text="Menu", width=20, command=lambda: show_frame(menu))
+btn_backuuid.pack(pady=20)
 
 # ISI TEMPLATE RP
 label_rp = tk.Label(template_RP, text="Template ResourcePack", font=("Arial", 25))
